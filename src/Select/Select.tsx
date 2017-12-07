@@ -3,7 +3,7 @@ import * as PropTypes from "prop-types";
 import { default as PlainSelect, ReactSelectProps, OptionValues, Option, OnChangeHandler, } from "react-select";
 
 import { InputContextTypes, InputContext } from "react-context-form";
-import { handleChange } from "../helpers/handleChange";
+import { getChangeHandler } from "../helpers/handleChange";
 
 export const SelectDefaultProps: {[K in keyof ReactSelectProps]?: ReactSelectProps[K]} = {
     className: "form-control",
@@ -30,5 +30,5 @@ export class Select<TValue = OptionValues> extends React.Component<ReactSelectPr
         return <this.PlainSelect {...childProps} />
     }
 
-    protected handleChange: OnChangeHandler<TValue> = handleChange.bind(this);
+    protected handleChange: OnChangeHandler<TValue> = getChangeHandler(this);
 }

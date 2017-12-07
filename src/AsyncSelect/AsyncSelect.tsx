@@ -3,7 +3,7 @@ import * as PropTypes from "prop-types";
 import { Async, ReactSelectProps, OptionValues, Option, OnChangeHandler, ReactAsyncSelectProps, } from "react-select";
 
 import { InputContextTypes, InputContext } from "react-context-form";
-import { handleChange } from "../helpers/handleChange";
+import { getChangeHandler } from "../helpers/handleChange";
 
 export const AsyncSelectDefaultProps: {[K in keyof ReactAsyncSelectProps]?: ReactAsyncSelectProps[K]} = {
     className: "form-control",
@@ -31,5 +31,5 @@ export class AsyncSelect<TValue = OptionValues> extends React.Component<ReactAsy
         return <this.PlainSelect {...childProps as any} />
     }
 
-    protected handleChange: OnChangeHandler<TValue> = handleChange.bind(this);
+    protected handleChange: OnChangeHandler<TValue> = getChangeHandler(this);
 }
