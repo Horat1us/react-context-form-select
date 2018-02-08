@@ -1,10 +1,13 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
 
-import {Async, Option} from "react-select";
+import {Async, Option, OnChangeHandler, ReactAsyncSelectProps} from "react-select";
+import { InputContextTypes, InputContext } from "react-context-form";
 
-export interface AsyncEntitySelectProps {
-    loadOptions: () => Promise<Array<{label: string, value: any}>>;
+import { getChangeHandler } from "../helpers/handleChange";
+
+export interface AsyncEntitySelectProps extends ReactAsyncSelectProps {
+    loadOptions: (value: string) => Promise<Option[]>;
     minLength?: number;
 }
 
@@ -26,6 +29,8 @@ export class AsyncEntitySelect
 
     public static readonly propTypes = AsyncEntitySelectPropTypes;
     public static readonly defaultProps = AsyncEntitySelectDefaultProps;
+    public static readonly contextTypes = InputContextTypes;
+    public readonly context: InputContext;
 
     public state: AsyncEntitySelectState = {
         cache: {
@@ -33,15 +38,25 @@ export class AsyncEntitySelect
         }
     };
 
-    public render() {
-        const {loadOptions, ...props} = this.props;
+    protected handleChange: OnChangeHandler = getChangeHandler(this);
 
+    public render() {
+        const {loadOptions, minLength, ...props} = this.props;
+
+        const childProps: ReactAsyncSelectProps = {
+            ...props,
+
+            name: this.context.name,
+            value: this.context.value,
+
+            onChange: this.handleChange,
+            onBlur: this.context.onBlur,
+            onFocus: this.context.onFocus,
+            loadOptions: this.loadOptions,
+            cache: this.state.cache,
+        };
         return (
-            <Async
-                {...props}
-                loadOptions={this.loadOptions}
-                cache={this.state.cache}
-            />
+            <Async {...childProps as any}/>
         );
     }
 
@@ -50,7 +65,7 @@ export class AsyncEntitySelect
             return {options: []};
         }
 
-        const options = await this.props.loadOptions();
+        const options = await this.props.loadOptions(value);
 
         this.state.cache[""] = [...this.state.cache[""], ...options];
         this.forceUpdate();
