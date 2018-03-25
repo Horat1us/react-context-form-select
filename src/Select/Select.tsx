@@ -26,11 +26,13 @@ export class Select<TValue = OptionValues> extends React.Component<ReactSelectPr
             onChange: this.handleChange,
             onBlur: this.context.onBlur,
             onFocus: this.context.onFocus,
-            ref: getRefHandler(this)
+            ref: this.handleRef
         }
 
         return <this.PlainSelect {...childProps} />
     }
+
+    protected handleRef =  getRefHandler(this);
 
     protected handleChange: OnChangeHandler<TValue> = getChangeHandler(this);
 }

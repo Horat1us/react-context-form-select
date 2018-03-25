@@ -27,11 +27,13 @@ export class AsyncSelect<TValue = OptionValues> extends React.Component<ReactAsy
             onChange: this.handleChange,
             onBlur: this.context.onBlur,
             onFocus: this.context.onFocus,
-            ref: getRefHandler(this)
+            ref: this.handleRef
         }
 
         return <this.PlainSelect {...childProps as any} />
     }
+
+    protected handleRef =  getRefHandler(this);
 
     protected handleChange: OnChangeHandler<TValue> = getChangeHandler(this);
 }

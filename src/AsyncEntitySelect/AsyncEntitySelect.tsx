@@ -55,12 +55,14 @@ export class AsyncEntitySelect
             onFocus: this.context.onFocus,
             loadOptions: this.loadOptions,
             cache: this.state.cache,
-            ref: getRefHandler(this)
+            ref: this.handleRef
         };
         return (
             <Async {...childProps as any}/>
         );
     }
+
+    protected handleRef =  getRefHandler(this);
 
     protected loadOptions = async (value: string): Promise<{ options: Option[] }> => {
         if (value.length < this.props.minLength) {

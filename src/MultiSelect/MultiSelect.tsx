@@ -22,11 +22,13 @@ export class MultiSelect<TValue = OptionValues> extends React.Component<ReactSel
             onBlur: this.context.onBlur,
             onFocus: this.context.onFocus,
             multi: true,
-            ref: getRefHandler(this)
+            ref: this.handleRef
         }
 
         return <this.PlainSelect {...childProps} />
     }
+
+    protected handleRef =  getRefHandler(this);
 
     protected handleChange = (option: Option<any[]>): void => {
         this.context.onChange(
