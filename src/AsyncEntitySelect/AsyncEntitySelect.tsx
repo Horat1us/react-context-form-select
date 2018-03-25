@@ -5,6 +5,7 @@ import {Async, Option, OnChangeHandler, ReactAsyncSelectProps} from "react-selec
 import { InputContextTypes, InputContext } from "react-context-form";
 
 import { getChangeHandler } from "../helpers/handleChange";
+import { getRefHandler } from "../helpers/setRef";
 
 export interface AsyncEntitySelectProps extends ReactAsyncSelectProps {
     loadOptions: (value: string) => Promise<Option[]>;
@@ -54,6 +55,7 @@ export class AsyncEntitySelect
             onFocus: this.context.onFocus,
             loadOptions: this.loadOptions,
             cache: this.state.cache,
+            ref: getRefHandler(this)
         };
         return (
             <Async {...childProps as any}/>

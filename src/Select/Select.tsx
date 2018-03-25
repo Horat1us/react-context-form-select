@@ -4,6 +4,7 @@ import { default as PlainSelect, ReactSelectProps, OptionValues, Option, OnChang
 
 import { InputContextTypes, InputContext } from "react-context-form";
 import { getChangeHandler } from "../helpers/handleChange";
+import { getRefHandler } from "../helpers/setRef";
 
 export const SelectDefaultProps: {[K in keyof ReactSelectProps]?: ReactSelectProps[K]} = {
     className: "form-control",
@@ -25,6 +26,7 @@ export class Select<TValue = OptionValues> extends React.Component<ReactSelectPr
             onChange: this.handleChange,
             onBlur: this.context.onBlur,
             onFocus: this.context.onFocus,
+            ref: getRefHandler(this)
         }
 
         return <this.PlainSelect {...childProps} />
