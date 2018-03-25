@@ -3,6 +3,7 @@ import * as PropTypes from "prop-types";
 import { default as PlainSelect, ReactSelectProps, OptionValues, OnChangeHandler, Option } from "react-select";
 
 import { InputContextTypes, InputContext } from "react-context-form";
+import { getRefHandler } from "../helpers/setRef";
 
 export class MultiSelect<TValue = OptionValues> extends React.Component<ReactSelectProps<TValue>> {
     public static readonly contextTypes = InputContextTypes;
@@ -20,11 +21,14 @@ export class MultiSelect<TValue = OptionValues> extends React.Component<ReactSel
             onChange: this.handleChange as any,
             onBlur: this.context.onBlur,
             onFocus: this.context.onFocus,
-            multi: true
+            multi: true,
+            ref: this.handleRef
         }
 
         return <this.PlainSelect {...childProps} />
     }
+
+    protected handleRef =  getRefHandler(this);
 
     protected handleChange = (option: Option<any[]>): void => {
         this.context.onChange(
