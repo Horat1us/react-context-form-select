@@ -1,6 +1,6 @@
-import { InputContext } from "react-context-form";
+import { FormGroupContextValue } from "react-context-form";
 
-export const getRefHandler = (self: { context: InputContext }) => (element) => {
+export const getRefHandler = (self: { context: FormGroupContextValue }) => (element) => {
     if (!element || !element.input) {
         return;
     }

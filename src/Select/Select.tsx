@@ -1,18 +1,19 @@
 import * as React from "react";
-import * as PropTypes from "prop-types";
 import { default as PlainSelect, ReactSelectProps, OptionValues, Option, OnChangeHandler, } from "react-select";
 
-import { InputContextTypes, InputContext } from "react-context-form";
+import { FormGroupContext, FormGroupContextValue, FormProps } from "react-context-form";
 import { getChangeHandler } from "../helpers/handleChange";
 import { getRefHandler } from "../helpers/setRef";
 
 export const SelectDefaultProps: {[K in keyof ReactSelectProps]?: ReactSelectProps[K]} = {
     className: "form-control",
-}
+};
 
 export class Select<TValue = OptionValues> extends React.Component<ReactSelectProps<TValue>> {
-    public static readonly contextTypes = InputContextTypes;
-    public readonly context: InputContext<TValue>;
+    public static readonly contextType = FormGroupContext;
+    public static readonly defaultProps = SelectDefaultProps;
+
+    public readonly context: FormGroupContextValue<TValue>;
 
     protected PlainSelect = class extends PlainSelect<TValue> { };
 

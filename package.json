@@ -36,11 +36,11 @@
     "@types/cheerio": "^0.22.2",
     "@types/enzyme": "^2.8.5",
     "@types/mocha": "^2.2.41",
-    "@types/prop-types": "^15.5.1",
-    "@types/react": "^16.0.0",
+    "@types/react": "^16.8.1",
     "@types/react-select": "^1.0.59",
     "@types/sinon": "^2.3.3",
     "awesome-typescript-loader": "^3.2.2",
+    "axios": "^0.18.0",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
     "babel-plugin-react-transform": "^2.0.2",
@@ -63,9 +63,8 @@
     "mocha": "^3.5.0",
     "nyc": "^11.1.0",
     "pre-commit": "^1.2.2",
-    "prop-types": "^15.5.10",
-    "react": "^16.2",
-    "react-context-form": "^1.8.1",
+    "react": "^16.7.0",
+    "react-context-form": "^3.0.0-2",
     "react-dom": "^16.2",
     "react-select": "^1.1.0",
     "react-test-renderer": "^15.6.1",
@@ -75,16 +74,15 @@
     "ts-node": "^3.3.0",
     "tslint": "^5.6.0",
     "tslint-react": "^3.2.0",
-    "typescript": "^2.4.2",
+    "typescript": "^3.3.1",
     "uglify-js": "^2.6.4",
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.6.1",
     "webpack-node-externals": "^1.6.0"
   },
   "peerDependencies": {
-    "prop-types": "^15.5.10",
     "react-select": "^1.1.0",
-    "react-context-form": "^1.8.0",
+    "react-context-form": "^3.0.0-2",
     "react": "^16.2"
   },
   "nyc": {
@@ -104,7 +102,6 @@
     ],
     "report-dir": "./tests/output"
   },
-  "dependencies": {},
   "pre-commit": [
     "lint"
   ]

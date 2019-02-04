@@ -1,8 +1,7 @@
 import * as React from "react";
-import * as PropTypes from "prop-types";
 import { Async, ReactSelectProps, OptionValues, Option, OnChangeHandler, ReactAsyncSelectProps, } from "react-select";
 
-import { InputContextTypes, InputContext } from "react-context-form";
+import { FormGroupContext, FormGroupContextValue } from "react-context-form";
 import { getChangeHandler } from "../helpers/handleChange";
 import { getRefHandler } from "../helpers/setRef";
 
@@ -12,8 +11,8 @@ export const AsyncSelectDefaultProps: {[K in keyof ReactAsyncSelectProps]?: Reac
 }
 
 export class AsyncSelect<TValue = OptionValues> extends React.Component<ReactAsyncSelectProps<TValue>> {
-    public static readonly contextTypes = InputContextTypes;
-    public readonly context: InputContext<TValue>;
+    public static readonly contextType = FormGroupContext;
+    public readonly context: FormGroupContextValue<TValue>;
 
     protected PlainSelect = class extends Async<TValue> { };
 

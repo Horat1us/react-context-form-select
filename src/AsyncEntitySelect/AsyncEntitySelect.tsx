@@ -1,8 +1,7 @@
 import * as React from "react";
-import * as PropTypes from "prop-types";
 
 import {Async, Option, OnChangeHandler, ReactAsyncSelectProps} from "react-select";
-import { InputContextTypes, InputContext } from "react-context-form";
+import { FormGroupContext, FormGroupContextValue } from "react-context-form";
 
 import { getChangeHandler } from "../helpers/handleChange";
 import { getRefHandler } from "../helpers/setRef";
@@ -12,11 +11,6 @@ export interface AsyncEntitySelectProps extends ReactAsyncSelectProps {
     minLength?: number;
 }
 
-export const AsyncEntitySelectPropTypes = {
-    loadOptions: PropTypes.func.isRequired,
-    minLength: PropTypes.number,
-};
-
 export const AsyncEntitySelectDefaultProps = {
     minLength: 3,
 };
@@ -25,13 +19,11 @@ export interface AsyncEntitySelectState {
     cache: { [T: string]: Option[] };
 }
 
-export class AsyncEntitySelect
-    extends React.Component<AsyncEntitySelectProps, AsyncEntitySelectState> {
+export class AsyncEntitySelect extends React.Component<AsyncEntitySelectProps, AsyncEntitySelectState> {
 
-    public static readonly propTypes = AsyncEntitySelectPropTypes;
     public static readonly defaultProps = AsyncEntitySelectDefaultProps;
-    public static readonly contextTypes = InputContextTypes;
-    public readonly context: InputContext;
+    public static readonly contextType = FormGroupContext;
+    public readonly context: FormGroupContextValue;
 
     public state: AsyncEntitySelectState = {
         cache: {
