@@ -1,13 +1,12 @@
 import * as React from "react";
-import * as PropTypes from "prop-types";
 import { default as PlainSelect, ReactSelectProps, OptionValues, OnChangeHandler, Option } from "react-select";
 
-import { InputContextTypes, InputContext } from "react-context-form";
+import { FormGroupContext, FormGroupContextValue } from "react-context-form";
 import { getRefHandler } from "../helpers/setRef";
 
 export class MultiSelect<TValue = OptionValues> extends React.Component<ReactSelectProps<TValue>> {
-    public static readonly contextTypes = InputContextTypes;
-    public readonly context: InputContext<TValue>;
+    public static readonly contextType = FormGroupContext;
+    public readonly context: FormGroupContextValue<TValue>;
 
     protected PlainSelect = class extends PlainSelect<TValue> { };
 
