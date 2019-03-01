@@ -4,7 +4,7 @@ import {Async, Option, OnChangeHandler, ReactAsyncSelectProps} from "react-selec
 import { FormGroupContext, FormGroupContextValue } from "react-context-form";
 
 import { getChangeHandler } from "../helpers/handleChange";
-import { getRefHandler } from "../helpers/setRef";
+import { getAsyncRefHandler } from "../helpers/setRef";
 
 export interface AsyncEntitySelectProps extends ReactAsyncSelectProps {
     loadOptions: (value: string) => Promise<Option[]>;
@@ -54,7 +54,7 @@ export class AsyncEntitySelect extends React.Component<AsyncEntitySelectProps, A
         );
     }
 
-    protected handleRef =  getRefHandler(this);
+    protected handleRef = getAsyncRefHandler(this);
 
     protected loadOptions = async (value: string): Promise<{ options: Option[] }> => {
         if (value.length < this.props.minLength) {
