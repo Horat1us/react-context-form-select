@@ -3,7 +3,7 @@ import { Async, ReactSelectProps, OptionValues, Option, OnChangeHandler, ReactAs
 
 import { FormGroupContext, FormGroupContextValue } from "react-context-form";
 import { getChangeHandler } from "../helpers/handleChange";
-import { getRefHandler } from "../helpers/setRef";
+import { getAsyncRefHandler } from "../helpers/setRef";
 
 export const AsyncSelectDefaultProps: {[K in keyof ReactAsyncSelectProps]?: ReactAsyncSelectProps[K]} = {
     className: "form-control",
@@ -27,12 +27,12 @@ export class AsyncSelect<TValue = OptionValues> extends React.Component<ReactAsy
             onBlur: this.context.onBlur,
             onFocus: this.context.onFocus,
             ref: this.handleRef
-        }
+        };
 
         return <this.PlainSelect {...childProps as any} />
     }
 
-    protected handleRef =  getRefHandler(this);
+    protected handleRef =  getAsyncRefHandler(this);
 
     protected handleChange: OnChangeHandler<TValue> = getChangeHandler(this);
 }
