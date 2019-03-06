@@ -13,5 +13,5 @@ export const getAsyncRefHandler = (self: { context: FormGroupContextValue }) => 
         return;
     }
 
-    self.context.onMount(element.context.input);
+    self.context.onMount(element.select.input);
 };
