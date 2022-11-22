@@ -82,10 +82,10 @@
     "webpack-node-externals": "^1.6.0"
   },
   "peerDependencies": {
-    "prop-types": "^15.5.10",
+    "prop-types": ">=15.5.10",
     "react-select": "^1.1.0",
     "react-context-form": "^1.8.0",
-    "react": "^16.2"
+    "react": ">=16.2"
   },
   "nyc": {
     "extension": [
