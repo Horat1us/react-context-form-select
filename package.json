@@ -84,7 +84,7 @@
   "peerDependencies": {
     "prop-types": ">=15.5.10",
     "react-select": "^1.1.0",
-    "react-context-form": "^1.8.0",
+    "react-context-form": "^1.8.0 || ^2.0",
     "react": ">=16.2"
   },
   "nyc": {
