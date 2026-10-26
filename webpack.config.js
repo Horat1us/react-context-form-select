@@ -31,24 +31,7 @@
         loaders: [
             {
                 test: /\.tsx?$/,
-                loaders: [
-                    {
-                        loader: "babel-loader",
-                        query: {
-                            presets: ['es2015', 'react', 'stage-0', 'stage-1',],
-                        },
-                    },
-                    "awesome-typescript-loader",
-                ],
-            }
-            ,
-            {
-                test: /\.jsx?$/,
-                exclude: [/node_modules/],
-                loader: "babel-loader",
-                query: {
-                    presets: ['es2015', 'react', 'stage-0', 'stage-1',]
-                },
+                loader: "awesome-typescript-loader",
             },
             {
                 enforce: "pre",
